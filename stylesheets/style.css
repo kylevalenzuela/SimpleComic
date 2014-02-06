@@ -1,0 +1,40 @@
+/* line 1, ../sass/style.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 2, ../sass/style.scss */
+body {
+  background: white;
+  font: 14px/1.4 Georgia, Serif;
+}
+
+/* line 3, ../sass/style.scss */
+.screen-reader-text {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+/* line 4, ../sass/style.scss */
+.clear {
+  clear: both;
+}
+
+/* line 5, ../sass/style.scss */
+.group:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/* line 6, ../sass/style.scss */
+* html .group, *:first-child + html .group {
+  zoom: 1;
+}
+
+/* First selector = IE6, Second Selector = IE 7 */

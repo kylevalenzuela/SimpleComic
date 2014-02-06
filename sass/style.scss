@@ -1,0 +1,772 @@
+/*********** ********** **********   
+Theme Name: Simple Comic
+Theme URI: https://github.com/kylevalenzuela/Portfolio-2014
+Author: Kyle Valenzuela
+Author URI: http://kylevalenzuela.com
+Description: Simple responsive theme to publish webcomics 
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: responsive, comic
+*********** ********** ********** **********/
+
+
+/* VARIABLES */
+
+$blue: #008EBA;
+$red: #ba2b00;
+$purple: #8800ba;
+$green: #31ba00;
+$bluefade: rgba(0, 71, 93, .5);
+
+
+/* FONTS */
+
+@font-face {
+    font-family: 'icon-font';  /*Icon Font*/
+    src: url('icon-font.eot');
+    src: url('icon-font.eot?#iefix') format('embedded-opentype'),
+         url('icon-font.woff') format('woff'),
+         url('icon-font.ttf') format('truetype'),
+         url('icon-font.svg#icomoonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:400,400italic,300italic,300,700);
+
+/* MIXINS */
+
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+@mixin icon(){
+	font-family: 'icon-font';
+}
+
+/* ANIMATION KEYFRAMES */
+
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+::selection {
+  background: $blue/2; 
+}
+
+
+/* Responsive Images, Video  */
+
+img {
+  -ms-interpolation-mode: bicubic;
+  border: 0;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+* { margin: 0; padding: 0; }
+
+body { background: white; background: $blue; font-family: 'Merriweather Sans', sans-serif; font-weight: 200; -webkit-font-smoothing: antialiased;}
+
+.screen-reader-text { position: absolute; left: -9999px; top: -9999px; }
+
+.clear { clear: both; }
+
+.group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+
+* html .group, *:first-child+html .group { zoom: 1; } /* First selector = IE6, Second Selector = IE 7 */
+
+
+
+/* Typography  */
+
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, p, p a {
+  font-weight: 700;
+  line-height: 1.0rem;
+  word-wrap: break-word;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 100;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2.625rem; /* = 42px */
+  font-weight: 100;
+  background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 3.5rem;
+}
+
+h2 {
+  font-size: 2.250rem; /* = 36px */ 
+}
+
+h3 {
+  font-size: 1.875rem; /* = 30px */
+}
+
+h4 {
+  font-size: 1.500rem; /* = 24px */
+  font-weight: 100;
+  color: white;
+}
+
+h5 {
+  font-size: 1.125rem; /* = 18px */
+  font-weight: 400;
+  background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+h6 {
+	font-size: 1.000rem; /* = 16px */
+	color: $blue;
+}
+
+p {
+	font-size: 1.000rem;
+	font-weight: 300;
+	color: white;
+	margin-bottom: 2rem;
+}
+
+
+/****************************************
+DESKTOPS MEDIA QUERY 
+*****************************************/
+@media only screen 
+and (min-width: 1160px) {
+	nav {
+		position: fixed;
+		top: 0; left: 0;
+		width: 40%;
+		height: 100%; 
+		overflow-x: hidden;
+		overflow-y: auto;
+		float: left;
+		border-right: $blue/2 solid 1px;
+
+		.header-wrap {
+			position: relative;
+			width: 85%;
+			height: 10rem;
+			margin: 1rem auto;
+			z-index: 101;	
+
+			.header-logo {
+				width: 100%;
+				height: 100%;
+				background: url('http://localhost:8888/wp-content/uploads/2014/01/positivedissemination_logo-e1391141864951.png') center no-repeat;	
+			}
+			
+			span {
+				position: absolute;
+				width: 100%;
+				font-family: 'icon-font';
+				font-size: 3rem;
+				background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); /* Chrome10+,Safari5.1+ */
+				-webkit-background-clip: text;
+	  			-webkit-text-fill-color: transparent;
+	  			color: white;
+				z-index: 100;
+				text-align: center;
+				margin-top: 1.3rem;
+				margin-left: 1.25rem;
+				@include vendor-prefix(transition, all linear 1s );
+			}
+			h5 {
+				text-align: center;
+			}
+		}
+
+		.main-nav {
+			position: relative; 
+			list-style: none;
+			height: auto;
+			text-align: center;
+			margin-top: 8rem;
+			li {
+				display: inline-block;
+				span {
+					@include icon();
+					display: inline-block;
+					color: white;
+					font-size: 1.5rem;
+					margin-right: 1rem;
+					line-height: 1.5rem;
+					@include vendor-prefix(transition, all linear .3s );
+					&:hover {
+						color: $blue/2;
+						font-size: 3rem;
+						@include vendor-prefix(animation-name, spin);
+						@include vendor-prefix(animation-duration, 1000ms);
+						@include vendor-prefix(animation-iteration-count, infinite);
+						@include vendor-prefix(animation-timing-function, linear);
+					}
+				}
+				h4 {
+					display: inline-block;
+					@include vendor-prefix(transition, all linear .3s );
+					&:hover {
+						color: $blue/2;
+
+					}
+				}
+			}
+
+		}
+
+		.social-nav{
+			position: relative;
+			list-style: none;
+			text-align: center;
+			font-family: 'icon-font';
+			margin-top: 7rem;
+			font-size: 1.6rem;
+
+
+			li {
+				display: inline-block;
+				@include vendor-prefix(transition, all linear .3s );
+				a {
+					text-decoration: none;
+					color: white;
+					&:hover {
+						color: $blue/2;
+					}
+				}
+				&:hover {
+					
+					font-size: 4rem;
+					@include vendor-prefix(animation-name, spin);
+					@include vendor-prefix(animation-duration, 2000ms);
+					@include vendor-prefix(animation-iteration-count, infinite);
+					@include vendor-prefix(animation-timing-function, linear);
+				}
+			}
+		}
+
+		footer {
+			text-align: center;
+			margin-top: 5rem;
+			color: white;
+			font-weight: 200;
+		}
+	}
+
+	.page-wrap {
+		position: fixed; 
+		height: 100%;
+		left: 40%;
+		overflow-y: auto;
+		padding-top: 2rem;
+
+	}
+	
+	.med {
+		position: relative;
+		margin: 2rem 10%;
+
+
+		img {
+			max-width: 80%;
+		}
+	}
+
+	.comic-nav {
+		text-align: center;
+		@include icon();
+		font-size: 3rem;
+		margin: 2rem auto;
+
+		a{
+			text-decoration: none;
+			background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); 
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+
+			&:hover {
+				background: -webkit-linear-gradient(top, $blue/2 0%,$blue/2 100%); 
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		} 
+		&:hover { color: $blue/2;}
+	}
+
+	.entry {
+		margin: 2rem 4%;
+	}
+
+	.article {
+		margin: 2rem auto; 
+		margin-bottom: 5rem;
+	}
+
+	.twitter {
+		text-align: center;
+	}
+
+	.comic-wrap {
+		position: relative;
+		float: left; 
+		margin: auto 2%;
+		overflow: hidden;
+	}
+
+	.comic-item {
+		position: relative;
+		width: 20%;
+		height: 100%;
+		margin-left: 4%; 	
+		margin-bottom: 2rem;
+		float: left;
+		overflow: hidden;
+
+		span {
+			position: absolute;
+			width: 100%;
+			height: 4rem;
+			top: -4rem;
+			background: $bluefade;
+			display: inline-block; 
+			float: left;
+			@include vendor-prefix(transition, all linear .3s);
+
+
+
+			h6 {
+				width: 100%;
+				display: block;
+				text-align: center;
+				margin-top: 15%; 
+				color: white;
+				font-weight: 100;
+
+			}
+		}
+		&:hover span {
+				top: 0
+		}
+	}
+}
+
+/******************************************************************
+*****************************************************************
+MEDIA QUERY: TABLET SIZE (768px-1159px)
+***********************************************************************************
+*****************************************************************/
+
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1159px) {
+	nav {
+		position: fixed;
+		top: 0; left: 0;
+		width: 30%;
+		height: 100%; 
+		overflow-x: hidden;
+		overflow-y: auto;
+		float: left;
+		border-right: $blue/2 solid 1px;
+
+		.header-wrap {
+			position: relative;
+			width: 85%;
+			height: 10rem;
+			margin: .5rem auto;
+			z-index: 101;	
+
+			.header-logo {
+				width: 100%;
+				height: 100%;
+				background: url('http://localhost:8888/wp-content/uploads/2014/01/positivedissemination_logo-e1391141864951.png') center no-repeat;	
+				background-size: auto 40%;
+			}
+			
+			span {
+				position: absolute;
+				width: 100%;
+				font-family: 'icon-font';
+				font-size: 1.7rem;
+				background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); /* Chrome10+,Safari5.1+ */
+				-webkit-background-clip: text;
+	  			-webkit-text-fill-color: transparent;
+	  			color: white;
+				z-index: 100;
+				text-align: center;
+				margin-top: 3.05rem;
+				margin-left: .6rem;
+				@include vendor-prefix(transition, all linear 1s );
+			}
+			h5 {
+				text-align: center;
+			}
+		}
+
+		.main-nav {
+			position: relative; 
+			list-style: none;
+			height: auto;
+			text-align: center;
+			margin-top: 8rem;
+			li {
+				display: inline-block;
+				span {
+					@include icon();
+					display: inline-block;
+					color: white;
+					font-size: 1.5rem;
+					margin-right: 1rem;
+					line-height: 1.5rem;
+					@include vendor-prefix(transition, all linear .3s );
+					&:hover {
+						color: $blue/2;
+						font-size: 3rem;
+						@include vendor-prefix(animation-name, spin);
+						@include vendor-prefix(animation-duration, 1000ms);
+						@include vendor-prefix(animation-iteration-count, infinite);
+						@include vendor-prefix(animation-timing-function, linear);
+					}
+				}
+				h4 {
+					display: inline-block;
+					@include vendor-prefix(transition, all linear .3s );
+					&:hover {
+						color: $blue/2;
+
+					}
+				}
+			}
+
+		}
+
+		.social-nav{
+			position: relative;
+			list-style: none;
+			text-align: center;
+			font-family: 'icon-font';
+			margin-top: 7rem;
+			font-size: 1.6rem;
+
+
+			li {
+				display: inline-block;
+				@include vendor-prefix(transition, all linear .3s );
+				a {
+					text-decoration: none;
+					color: white;
+					&:hover {
+						color: $blue/2;
+					}
+				}
+				&:hover {
+					
+					font-size: 4rem;
+					@include vendor-prefix(animation-name, spin);
+					@include vendor-prefix(animation-duration, 2000ms);
+					@include vendor-prefix(animation-iteration-count, infinite);
+					@include vendor-prefix(animation-timing-function, linear);
+				}
+			}
+		}
+
+		footer {
+			text-align: center;
+			margin-top: 5rem;
+			color: white;
+			font-weight: 200;
+		}
+	}
+
+	.page-wrap {
+		position: fixed; 
+		height: 100%;
+		left: 30%;
+		overflow-y: auto;
+		padding-top: 2rem;
+
+	}
+
+	.med {
+		position: relative;
+		margin: 2rem 10%;
+
+
+		img {
+			max-width: 80%;
+		}
+	}
+
+	.comic-nav {
+		text-align: center;
+		@include icon();
+		font-size: 3rem;
+		margin: 2rem auto;
+
+		a{
+			text-decoration: none;
+			background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); 
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+
+			&:hover {
+				background: -webkit-linear-gradient(top, $blue/2 0%,$blue/2 100%); 
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		} 
+	}
+
+	.entry {
+		margin: 2rem 4%;
+	}
+
+	.article {
+		margin: 2rem auto; 
+		margin-bottom: 5rem;
+	}
+
+	.twitter {
+		text-align: center;
+	}
+	
+	.comic-wrap {
+		position: relative;
+		float: left; 
+		margin: auto 2%;
+		overflow: hidden;
+	}
+
+	.comic-item {
+		position: relative;
+		width: 26.667%;
+		height: 100%;
+		margin-left: 4%; 	
+		margin-bottom: 2rem;
+		float: left;
+		overflow: hidden;
+
+
+
+		span {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			background: $bluefade;
+			display: inline-block; 
+			float: left;
+			@include vendor-prefix(transition, all linear .3s);
+
+
+
+			h6 {
+				width: 100%;
+				display: block;
+				text-align: center;
+				margin-top: 15%; 
+				color: white;
+				font-weight: 100;
+
+			}
+		}
+	}
+}
+
+/******************************************************************
+*****************************************************************
+MEDIA QUERY: Phones and small devices 
+***********************************************************************************
+*****************************************************************/
+
+@media only screen and (max-width : 767px), 
+(max-device-width : 767px) {
+	
+	nav {
+		position: relative;
+		width: 100%;
+		height: 100%; 
+		border-bottom: $blue/2 solid 1px;
+
+		.header-wrap {
+			position: relative;
+			width: 100%;
+			height: 6.25rem;
+			z-index: 101;	
+
+
+			.header-logo {
+				margin-top: .5rem;
+				width: 100%;
+				height: 100%;
+				background: url('http://localhost:8888/wp-content/uploads/2014/01/positivedissemination_logo-e1391141864951.png') center no-repeat;	
+				background-size: 19rem auto;
+			}
+			
+			span {
+				position: absolute;
+				width: 100%;
+				font-family: 'icon-font';
+				font-size: 2.6rem;
+				background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); /* Chrome10+,Safari5.1+ */
+				-webkit-background-clip: text;
+	  			-webkit-text-fill-color: transparent;
+	  			color: white;
+				z-index: 100;
+				text-align: center;
+				margin-top: .1rem;
+				margin-left: 1rem;
+				@include vendor-prefix(transition, all linear 1s );
+			}
+			h5 {
+				display: none;
+			}
+		}
+
+		.main-nav {
+			display: none;
+		}
+
+		.social-nav{
+			display: none;
+		}
+
+		
+	}
+	footer {
+			display: none;
+		}
+
+
+	.page-wrap {
+		position: fixed; 
+		height: 100%;
+		width: 100%;
+		overflow-y: auto;
+		padding-top: 2rem;
+
+	}
+
+	.med {
+		position: relative;
+		margin: 2rem 10%;
+
+
+		img {
+			max-width: 80%;
+		}
+	}
+
+	.comic-nav {
+		text-align: center;
+		@include icon();
+		font-size: 3rem;
+		margin: 2rem auto;
+
+		a{
+			text-decoration: none;
+			background: -webkit-linear-gradient(top, #ffffff 0%,#cdcdcd 100%); 
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+
+			&:hover {
+				background: -webkit-linear-gradient(top, $blue/2 0%,$blue/2 100%); 
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		} 
+	}
+
+	.entry {
+		margin: 2rem 4%;
+	}
+
+	.article {
+		margin: 2rem auto; 
+		margin-bottom: 5rem;
+	}
+
+	.twitter {
+		text-align: center;
+	}
+
+	.comic-wrap {
+		position: relative;
+		float: left; 
+		margin: auto 7%;
+		overflow: hidden;
+		padding-top: 2rem;
+	}
+
+	.comic-item {
+		position: relative;
+		width: 40%;
+		height: 100%;
+		margin-right: 5%;
+		margin-left: 5%; 	
+		margin-bottom: 2rem;
+		float: left;
+		overflow: hidden;
+
+
+		span {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			background: $bluefade;
+			display: inline-block; 
+			float: left;
+			@include vendor-prefix(transition, all linear .3s);
+
+
+
+			h6 {
+				width: 100%;
+				display: block;
+				text-align: center;
+				margin-top: 15%; 
+				color: white;
+				font-weight: 100;
+
+			}
+		}
+		&:hover span {
+				top: 0
+		}
+	}
+}
+
